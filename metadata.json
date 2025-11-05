@@ -1,0 +1,5 @@
+{
+  "name": "Cognitive Note Taking",
+  "description": "An intelligent note-taking application that helps you visualize the connections between your ideas. It uses AI to automatically detect and suggest links between topics, presenting your knowledge as an interactive graph.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cognitive Canvas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'canvas-bg': '#111827',
+              'panel-bg': '#1F2937',
+              'border-color': '#374151',
+              'text-primary': '#F9FAFB',
+              'text-secondary': '#9CA3AF',
+              'accent': '#22D3EE',
+              'accent-hover': '#67E8F9',
+            },
+            typography: ({ theme }) => ({
+              invert: {
+                css: {
+                  '--tw-prose-body': theme('colors.text-primary'),
+                  '--tw-prose-headings': theme('colors.accent'),
+                  '--tw-prose-lead': theme('colors.text-secondary'),
+                  '--tw-prose-links': theme('colors.accent'),
+                  '--tw-prose-bold': theme('colors.text-primary'),
+                  '--tw-prose-counters': theme('colors.text-secondary'),
+                  '--tw-prose-bullets': theme('colors.border-color'),
+                  '--tw-prose-hr': theme('colors.border-color'),
+                  '--tw-prose-quotes': theme('colors.text-secondary'),
+                  '--tw-prose-quote-borders': theme('colors.border-color'),
+                  '--tw-prose-captions': theme('colors.text-secondary'),
+                  '--tw-prose-code': theme('colors.text-primary'),
+                  '--tw-prose-pre-code': theme('colors.text-secondary'),
+                  '--tw-prose-pre-bg': theme('colors.canvas-bg'),
+                  '--tw-prose-th-borders': theme('colors.border-color'),
+                  '--tw-prose-td-borders': theme('colors.border-color'),
+                },
+              },
+            }),
+          },
+        },
+      }
+    </script>
+    <style>
+      .ProseMirror {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .ProseMirror:focus {
+        outline: none;
+      }
+      .ProseMirror > * + * {
+        margin-top: 0.75em;
+      }
+      .ProseMirror ul, .ProseMirror ol {
+        padding: 0 1rem;
+      }
+      .ProseMirror table {
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: 100%;
+        margin: 0;
+        overflow: hidden;
+      }
+      .ProseMirror td, .ProseMirror th {
+        min-width: 1em;
+        border: 2px solid #4B5563;
+        padding: 3px 5px;
+        vertical-align: top;
+        box-sizing: border-box;
+        position: relative;
+      }
+      .ProseMirror th {
+        font-weight: bold;
+        text-align: left;
+        background-color: #374151;
+      }
+      .ProseMirror .selectedCell:after {
+        z-index: 2;
+        position: absolute;
+        content: "";
+        left: 0; right: 0; top: 0; bottom: 0;
+        background: rgba(34, 211, 238, 0.15);
+        pointer-events: none;
+      }
+      .ProseMirror .column-resize-handle {
+        position: absolute;
+        right: -2px;
+        top: 0;
+        bottom: -2px;
+        width: 4px;
+        background-color: #67E8F9;
+        pointer-events: none;
+      }
+      .ProseMirror img {
+        max-width: 100%;
+        height: auto;
+      }
+      .ProseMirror img.ProseMirror-selectednode {
+        outline: 3px solid #67E8F9;
+      }
+      .ProseMirror h1, .ProseMirror h2, .ProseMirror h3 {
+        scroll-margin-top: 1rem;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.552.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "uuid": "https://aistudiocdn.com/uuid@^13.0.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "d3": "https://aistudiocdn.com/d3@^7.9.0",
+    "d3-force-3d": "https://aistudiocdn.com/d3-force-3d@^3.0.6",
+    "@tiptap/react": "https://aistudiocdn.com/@tiptap/react@^2.7.0",
+    "@tiptap/pm/state": "https://aistudiocdn.com/@tiptap/pm@^2.7.0/state",
+    "@tiptap/pm/view": "https://aistudiocdn.com/@tiptap/pm@^2.7.0/view",
+    "@tiptap/pm/model": "https://aistudiocdn.com/@tiptap/pm@^2.7.0/model",
+    "@tiptap/core": "https://aistudiocdn.com/@tiptap/core@^2.7.0",
+    "@tiptap/starter-kit": "https://aistudiocdn.com/@tiptap/starter-kit@^2.7.0",
+    "@tiptap/extension-image": "https://aistudiocdn.com/@tiptap/extension-image@^2.7.0",
+    "@tiptap/extension-table": "https://aistudiocdn.com/@tiptap/extension-table@^2.7.0",
+    "@tiptap/extension-table-row": "https://aistudiocdn.com/@tiptap/extension-table-row@^2.7.0",
+    "@tiptap/extension-table-header": "https://aistudiocdn.com/@tiptap/extension-table-header@^2.7.0",
+    "@tiptap/extension-table-cell": "https://aistudiocdn.com/@tiptap/extension-table-cell@^2.7.0",
+    "react-force-graph-2d": "https://aistudiocdn.com/react-force-graph-2d@^1.29.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-canvas-bg text-text-primary font-sans antialiased">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
